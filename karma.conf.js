@@ -38,7 +38,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false
+    browsers: ['ChromeSmall'],
+    customLaunchers: {
+    ChromeSmall: {
+        base: 'Chrome',
+        flags: ['--window-size=300,300', '--headless', '--disable-gpu'] // headless available only for Chrome 59+
+    }
+},
+    singleRun: true
   });
 };
