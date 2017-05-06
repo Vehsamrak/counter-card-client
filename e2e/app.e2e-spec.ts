@@ -6,9 +6,4 @@ describe('counter-card App', () => {
   beforeEach(() => {
     page = new CounterCardPage();
   });
-
-  it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
-  });
 });
