@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HistoryComponent } from './components/history/history.component';
 import { RoutingModule } from './routing.module';
+import { HelpComponent } from './components/help/help.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HistoryComponent
+        HistoryComponent,
+        HelpComponent
     ],
     imports: [
         BrowserModule,

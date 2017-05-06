@@ -1,37 +1,38 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">Электронная Карточка</span>
+            <span routerLink="/" class="pointer mdl-layout-title">Электронная Карточка</span>
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-layout__header-row mdl-layout--large-screen-only">Квартира № 00</div>
-            <div class="mdl-layout__header-row mdl-layout--large-screen-only">Иванов Иван Иванович</div>
+            <div class="mdl-layout__header-row mdl-layout--large-screen-only"><h5>Квартира №00</h5></div>
+            <div class="mdl-layout__header-row mdl-layout--large-screen-only"><h4>Иванов Иван Иванович</h4></div>
         </div>
     </header>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Информация</span>
         <nav class="mdl-navigation">
-            <a routerLink="/history" class="mdl-navigation__link" href="">История</a>
-            <a class="mdl-navigation__link" href="">Помощь</a>
+            <a routerLink="/history" class="mdl-navigation__link">История</a>
+            <a routerLink="/help" class="mdl-navigation__link">Помощь</a>
         </nav>
     </div>
 
     <main class="mdl-layout__content">
         <div class="page-content">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--1-col mdl-layout--large-screen-only"></div>
-                <div class="mdl-cell mdl-cell--10-col">
-                    <router-outlet></router-outlet>
-                </div>
-            </div>
+            <router-outlet></router-outlet>
         </div>
     </main>
 
     <footer class="mdl-mini-footer">
-        <div class="mdl-mini-footer__right-section">
-            <div class="mdl-logo">Электронная Карточка, 2017</div>
+        <div class="mdl-mini-footer__right-section mdl-layout--large-screen-only">
             <ul class="mdl-mini-footer__link-list">
-            <li><a href="#">Помощь</a></li>
+                <li><a routerLink="/history">История показателей счетчика</a></li>
+                <li><a routerLink="/help">Справочный раздел</a></li>
+                <li>
+                    <div class="mdl-logo">Электронная Карточка, 2017</div>
+                </li>
             </ul>
+        </div>
+        <div class="mdl-mini-footer__right-section mdl-layout--small-screen-only">
+            <div class="mdl-logo no-margin">Электронная Карточка, 2017</div>
         </div>
     </footer>
 </div>

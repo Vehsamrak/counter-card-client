@@ -1,3 +1,19 @@
 .full-width {
     width: 100%;
 }
+
+h4, h5 {
+    margin: 0;
+}
+
+h4 {
+    font-weight: 800;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.no-margin {
+    margin: 0;
+}
