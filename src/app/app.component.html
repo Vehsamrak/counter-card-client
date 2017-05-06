@@ -1,0 +1,37 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Электронная Карточка</span>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout__header-row mdl-layout--large-screen-only">Квартира № 00</div>
+            <div class="mdl-layout__header-row mdl-layout--large-screen-only">Иванов Иван Иванович</div>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Информация</span>
+        <nav class="mdl-navigation">
+            <a routerLink="/history" class="mdl-navigation__link" href="">История</a>
+            <a class="mdl-navigation__link" href="">Помощь</a>
+        </nav>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col mdl-layout--large-screen-only"></div>
+                <div class="mdl-cell mdl-cell--10-col">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__right-section">
+            <div class="mdl-logo">Электронная Карточка, 2017</div>
+            <ul class="mdl-mini-footer__link-list">
+            <li><a href="#">Помощь</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
