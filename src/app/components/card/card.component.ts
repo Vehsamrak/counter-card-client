@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+    selector: 'app-card',
+    templateUrl: './card.component.html',
+    styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
-  constructor() { }
+    getCurrentMonth(): string {
+        let date = new Date();
+        let month = [];
+        month[0] = 'январь';
+        month[1] = 'февраль';
+        month[2] = 'март';
+        month[3] = 'апрель';
+        month[4] = 'май';
+        month[5] = 'июнь';
+        month[6] = 'июль';
+        month[7] = 'август';
+        month[8] = 'сентябрь';
+        month[9] = 'октябрь';
+        month[10] = 'ноябрь';
+        month[11] = 'декабрь';
 
-  ngOnInit() {
-  }
-
+        return month[date.getMonth()];
+    }
 }
