@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    closeMenu() {
+        let layout = document.querySelector('.mdl-layout');
+        // close menu with MaterialLayout interlan function
+        (<any>layout).MaterialLayout.drawerToggleHandler_();
+    }
 }
