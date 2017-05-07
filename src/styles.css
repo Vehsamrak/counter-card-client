@@ -10,10 +10,18 @@ h4 {
     font-weight: 800;
 }
 
+p {
+    font-size: 18px;
+}
+
 .pointer {
     cursor: pointer;
 }
 
 .no-margin {
     margin: 0;
+}
+
+.center {
+    text-align: center;
 }
