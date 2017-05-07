@@ -1,0 +1,4 @@
+.mdl-data-table th:not(:first-child),
+.mdl-data-table td:not(:first-child) {
+    text-align: center;
+}
