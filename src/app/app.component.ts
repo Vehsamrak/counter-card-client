@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    private flatNumber: number;
+    private ownerName: string;
+
+    public constructor() {
+        this.flatNumber = 10;
+        this.ownerName = 'Грозный Иван Васильевич'
+    }
+
     closeMenu() {
         let layout = document.querySelector('.mdl-layout');
         // close menu with MaterialLayout interlan function
