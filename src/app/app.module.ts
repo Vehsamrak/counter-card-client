@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HistoryComponent } from './components/history/history.component';
 import { RoutingModule } from './routing.module';
 import { HelpComponent } from './components/help/help.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HistoryComponent,
-        HelpComponent
+        HelpComponent,
+        CardComponent
     ],
     imports: [
         BrowserModule,
