@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+    private numericPattern = '-?[0-9]*(\.[0-9]+)?';
 
     getCurrentMonth(): string {
         let date = new Date();
