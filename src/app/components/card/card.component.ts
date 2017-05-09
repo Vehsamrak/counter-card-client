@@ -26,4 +26,8 @@ export class CardComponent {
 
         return month[date.getMonth()];
     }
+
+    getDaysToDeadline(): number {
+        return 0;
+    }
 }
