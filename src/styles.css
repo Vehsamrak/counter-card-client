@@ -39,6 +39,11 @@ p {
     background-color: #32681d;
 }
 
+/* Color of text in inactive input placeholder */
+.mdl-textfield__label {
+    color: #999999;
+}
+
 .spacer {
     display: block;
     height: 30px;
