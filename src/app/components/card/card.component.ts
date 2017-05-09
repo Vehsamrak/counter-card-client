@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-card',
@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-    private numericPattern = '-?[0-9]*(\.[0-9]+)?';
+    private numericPattern: string = '-?[0-9]*(\.[0-9]+)?';
+
+    private hotWater: string = '';
+    private coldWater: string = '';
+    private dayElectricity: string = '';
+    private nightElectricity: string = '';
 
     getCurrentMonth(): string {
         let date = new Date();
@@ -29,5 +34,12 @@ export class CardComponent {
 
     getDaysToDeadline(): number {
         return 0;
+    }
+
+    sendCounterParameters(): void {
+        console.log(this.hotWater);
+        console.log(this.coldWater);
+        console.log(this.dayElectricity);
+        console.log(this.nightElectricity);
     }
 }

@@ -8,23 +8,23 @@
     <div class="mdl-cell mdl-cell--12-col center">
         <form action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="hotWater">
+                <input [(ngModel)]="hotWater" name="hotWater" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="hotWater">
                 <label class="mdl-textfield__label" for="hotWater">Горячая вода</label>
                 <span class="mdl-textfield__error">Показания должны содержать только цифры!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="coldWater">
+                <input [(ngModel)]="coldWater" name="coldWater" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="coldWater">
                 <label class="mdl-textfield__label" for="coldWater">Холодная вода</label>
                 <span class="mdl-textfield__error">Показания должны содержать только цифры!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="dayElectricity">
+                <input [(ngModel)]="dayElectricity" name="dayElectricity" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="dayElectricity">
                 <label class="mdl-textfield__label" for="dayElectricity">Электричество
                     (день)</label>
                 <span class="mdl-textfield__error">Показания должны содержать только цифры!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="nightElectricity">
+                <input [(ngModel)]="nightElectricity" name="nightElectricity" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="nightElectricity">
                 <label class="mdl-textfield__label" for="nightElectricity">Электричество
                     (ночь)</label>
                 <span class="mdl-textfield__error">Показания должны содержать только цифры!</span>
@@ -34,7 +34,7 @@
             <div class="spacer"></div>
 
             <div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect colored-button">
+                <button (click)="sendCounterParameters()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect colored-button">
                     Отправить показания счетчиков
                 </button>
             </div>
