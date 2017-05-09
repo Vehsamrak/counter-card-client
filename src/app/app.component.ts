@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'application',
@@ -9,9 +10,15 @@ export class AppComponent {
     private flatNumber: number;
     private ownerName: string;
 
-    public constructor() {
+    public constructor(private router: Router) {
         this.flatNumber = 10;
-        this.ownerName = 'Грозный Иван Васильевич'
+        this.ownerName = 'Грозный Иван Васильевич';
+
+        router.events.subscribe((routerEvent) => {
+            if (routerEvent instanceof NavigationEnd) {
+                componentHandler.upgradeDom();
+            }
+        });
     }
 
     closeMenu() {
