@@ -23,7 +23,7 @@ export class AppComponent {
 
     closeMenu() {
         let layout = document.querySelector('.mdl-layout');
-        // close menu with MaterialLayout interlan function
+        // close menu with MaterialLayout internal function
         (<any>layout).MaterialLayout.drawerToggleHandler_();
     }
 }
