@@ -39,6 +39,10 @@ p {
     background-color: #32681d;
 }
 
+.colored-button {
+    background-color: rgba(97, 189, 54, 0.54);
+}
+
 /* Color of text in inactive input placeholder */
 .mdl-textfield__label {
     color: #999999;
