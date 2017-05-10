@@ -48,6 +48,10 @@ p {
     color: #999999;
 }
 
+.mdl-textfield__error {
+    cursor: default;
+}
+
 .spacer {
     display: block;
     height: 30px;

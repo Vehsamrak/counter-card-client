@@ -3,8 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'application',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
     private flatNumber: number;
