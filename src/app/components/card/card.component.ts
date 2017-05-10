@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
     selector: 'app-card',
@@ -6,14 +8,21 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-    private numericPattern: string = '-?[0-9]*(\.[0-9]+)?';
+    private apiUrl = 'http://echo.jsontest.com/key/value/result/ok'; //TODO[petr]: change this to real API url
+    private numericPattern: string = '\\d*';
+    private submitted: boolean = false;
+    private submitButtonEnabled: boolean = true;
+    public buttonText: string = 'Отправить показания счетчиков';
 
     private hotWater: string = '';
     private coldWater: string = '';
     private dayElectricity: string = '';
     private nightElectricity: string = '';
 
-    getCurrentMonth(): string {
+    constructor(private http: Http) {
+    }
+
+    public getCurrentMonth(): string {
         let date = new Date();
         let month = [];
         month[0] = 'январь';
@@ -32,14 +41,25 @@ export class CardComponent {
         return month[date.getMonth()];
     }
 
-    getDaysToDeadline(): number {
+    public getDaysToDeadline(): number {
         return 0;
     }
 
-    sendCounterParameters(): void {
-        console.log(this.hotWater);
-        console.log(this.coldWater);
-        console.log(this.dayElectricity);
-        console.log(this.nightElectricity);
+    public submitForm(form: any): void {
+        if (this.formIsValid(form)) {
+            this.submitButtonEnabled = false;
+            this.buttonText = 'Показания отправлены';
+
+            this.http.post(this.apiUrl, form).subscribe(
+                (data) => console.log(data),
+                (error) => console.log(error)
+            );
+        }
+
+        this.submitted = true;
+    }
+
+    private formIsValid(form: any): boolean {
+        return form.hotWater && form.coldWater && form.dayElectricity && form.nightElectricity;
     }
 }
