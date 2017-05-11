@@ -8,16 +8,17 @@ import 'rxjs/add/operator/toPromise';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-    private apiUrl = 'http://echo.jsontest.com/key/value/result/ok'; //TODO[petr]: change this to real API url
+    // private apiUrl = 'http://echo.jsontest.com/key/value/result/ok'; //TODO[petr]: change this to real API url
+    private apiUrl = 'http://localhost:8000/api/card'; //TODO[petr]: change this to real API url
     private numericPattern: string = '\\d*';
     private submitted: boolean = false;
     private submitButtonEnabled: boolean = true;
     public buttonText: string = 'Отправить показания счетчиков';
 
-    private hotWater: string = '';
-    private coldWater: string = '';
-    private dayElectricity: string = '';
-    private nightElectricity: string = '';
+    private waterHot: string = '';
+    private waterCold: string = '';
+    private electricityDay: string = '';
+    private electricityNight: string = '';
 
     constructor(private http: Http) {
     }
@@ -60,6 +61,6 @@ export class CardComponent {
     }
 
     private formIsValid(form: any): boolean {
-        return form.hotWater && form.coldWater && form.dayElectricity && form.nightElectricity;
+        return form.waterHot && form.waterCold && form.electricityDay && form.electricityNight;
     }
 }
