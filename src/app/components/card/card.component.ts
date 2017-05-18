@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 })
 export class CardComponent {
     // private apiUrl = 'http://echo.jsontest.com/key/value/result/ok'; //TODO[petr]: change this to real API url
-    private apiUrl = 'http://localhost:8000/api/card'; //TODO[petr]: change this to real API url
+    private apiUrl = 'http://localhost:8000/app_dev.php/api/card'; //TODO[petr]: change this to real API url
     private numericPattern: string = '\\d*';
     private submitted: boolean = false;
     private submitButtonEnabled: boolean = true;
