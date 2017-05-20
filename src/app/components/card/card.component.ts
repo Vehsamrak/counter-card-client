@@ -8,7 +8,6 @@ import 'rxjs/add/operator/toPromise';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-    // private apiUrl = 'http://echo.jsontest.com/key/value/result/ok'; //TODO[petr]: change this to real API url
     private apiUrl = 'http://localhost:8000/app_dev.php/api/card'; //TODO[petr]: change this to real API url
     private numericPattern: string = '[0-9]+([\.,])?([0-9]+)?';
     private submitted: boolean = false;
