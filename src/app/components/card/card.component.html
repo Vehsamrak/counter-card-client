@@ -10,27 +10,27 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input [(ngModel)]="waterHot" name="waterHot" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="waterHot">
                 <label class="mdl-textfield__label" for="waterHot">Горячая вода</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и необязательный разделитель!</span>
+                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
                 <span *ngIf="!waterHot && submitted" class="sub-error">Показания не могут быть пустыми!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input [(ngModel)]="waterCold" name="waterCold" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="waterCold">
                 <label class="mdl-textfield__label" for="waterCold">Холодная вода</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и необязательный разделитель!</span>
+                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
                 <span *ngIf="!waterCold && submitted" class="sub-error">Показания не могут быть пустыми!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input [(ngModel)]="electricityDay" name="electricityDay" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="electricityDay">
                 <label class="mdl-textfield__label" for="electricityDay">Электричество
                     (день)</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и необязательный разделитель!</span>
+                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
                 <span *ngIf="!electricityDay && submitted" class="sub-error">Показания не могут быть пустыми!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input [(ngModel)]="electricityNight" name="electricityNight" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="electricityNight">
                 <label class="mdl-textfield__label" for="electricityNight">Электричество
                     (ночь)</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и необязательный разделитель!</span>
+                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
                 <span *ngIf="!electricityNight && submitted" class="sub-error">Показания не могут быть пустыми!</span>
             </div>
 
