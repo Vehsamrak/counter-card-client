@@ -1,7 +1,7 @@
 <div *ngIf="isAuthenticated(); else loginForm" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-            <span routerLink="/" class="pointer mdl-layout-title">Электронная Карточка</span>
+            <span [routerLink]="['/card']" class="pointer mdl-layout-title">Электронная Карточка</span>
             <div class="mdl-layout-spacer"></div>
             <div class="mdl-layout__header-row mdl-layout--large-screen-only"><h5>Квартира №{{ flatNumber }}</h5></div>
             <div class="mdl-layout__header-row mdl-layout--large-screen-only"><h4>{{ ownerName }}</h4></div>

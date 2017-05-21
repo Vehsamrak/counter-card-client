@@ -1,5 +1,5 @@
-.full-width {
-    width: 100%;
+body {
+    outline: none;
 }
 
 h4, h5 {
@@ -12,6 +12,10 @@ h4 {
 
 p {
     font-size: 18px;
+}
+
+.full-width {
+    width: 100%;
 }
 
 .pointer {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-card',
@@ -8,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-    private apiUrl = 'http://localhost:8000/app_dev.php/api/card'; //TODO[petr]: change this to real API url
+    private apiUrl = environment.apiUrl + '/api/card';
     private numericPattern: string = '[0-9]+([\.,])?([0-9]+)?';
     private submitted: boolean = false;
     private submitButtonEnabled: boolean = true;
