@@ -1,4 +1,4 @@
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div *ngIf="isAuthenticated(); else loginForm" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <span routerLink="/" class="pointer mdl-layout-title">Электронная Карточка</span>
@@ -38,3 +38,7 @@
         </div>
     </footer>
 </div>
+
+<ng-template #loginForm>
+    <router-outlet></router-outlet>
+</ng-template>

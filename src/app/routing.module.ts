@@ -3,16 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { HistoryComponent } from './components/history/history.component';
 import { HelpComponent } from './components/help/help.component';
 import { CardComponent } from './components/card/card.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './services/security/AuthGuard';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/card', pathMatch: 'full' },
-    { path: 'card', component: CardComponent },
-    { path: 'help', component: HelpComponent },
-    { path: 'history', component: HistoryComponent },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'card', component: CardComponent, canActivate: [AuthGuard] },
+    { path: 'help', component: HelpComponent, canActivate: [AuthGuard] },
+    { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class RoutingModule {}
+export class RoutingModule {
+}

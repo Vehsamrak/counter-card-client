@@ -7,13 +7,17 @@ import { HistoryComponent } from './components/history/history.component';
 import { RoutingModule } from './routing.module';
 import { HelpComponent } from './components/help/help.component';
 import { CardComponent } from './components/card/card.component';
+import { LoginComponent } from './components/login/login.component';
+import { Authenticator } from './services/Authenticator';
+import { AuthGuard } from './services/security/AuthGuard';
 
 @NgModule({
     declarations: [
         AppComponent,
         HistoryComponent,
         HelpComponent,
-        CardComponent
+        CardComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -21,7 +25,10 @@ import { CardComponent } from './components/card/card.component';
         HttpModule,
         RoutingModule,
     ],
-    providers: [],
+    providers: [
+        AuthGuard,
+        Authenticator
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
