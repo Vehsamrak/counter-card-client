@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class Authenticator {
-    private currentUserStorageKey = 'currentUser';
+    private currentTokenStorageKey = 'currentToken';
 
     constructor(private http: Http) {
     }
 
     login(email: string, password: string) {
-        return this.http.post(environment.apiUrl + '/api/login', JSON.stringify({ email: email, password: password }))
+        return this.http.post(environment.apiUrl + '/api/login', {login: email, password: password})
             .map((response: Response) => {
-                const user = response.json();
+                const token = response.json();
 
-                if (user && user.token) {
-                    localStorage.setItem(this.currentUserStorageKey, JSON.stringify(user));
+                if (token) {
+                    localStorage.setItem(this.currentTokenStorageKey, token);
                 }
             });
     }
 
     logout() {
-        localStorage.removeItem(this.currentUserStorageKey);
+        localStorage.removeItem(this.currentTokenStorageKey);
     }
 
     public isAuthenticated(): boolean {
-        return localStorage.getItem(this.currentUserStorageKey) !== null;
+        return localStorage.getItem(this.currentTokenStorageKey) !== null;
     }
 }
