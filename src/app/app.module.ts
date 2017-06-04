@@ -10,6 +10,7 @@ import { CardComponent } from './components/card/card.component';
 import { LoginComponent } from './components/login/login.component';
 import { Authenticator } from './services/Authenticator';
 import { AuthGuard } from './services/security/AuthGuard';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { AuthGuard } from './services/security/AuthGuard';
         HistoryComponent,
         HelpComponent,
         CardComponent,
-        LoginComponent
+        LoginComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,
