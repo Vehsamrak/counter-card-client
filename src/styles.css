@@ -26,6 +26,10 @@ p {
     text-align: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .colored-button {
     background-color: rgba(97, 189, 54, 0.54);
 }
