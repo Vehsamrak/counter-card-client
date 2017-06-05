@@ -17,4 +17,7 @@
             <a [routerLink]="['/register']" class="btn btn-link">Регистрация</a>
         </div>
     </form>
+    <div *ngIf="invalidLoginAndPassword">
+        <p>Неверный логин и пароль!</p>
+    </div>
 </div>

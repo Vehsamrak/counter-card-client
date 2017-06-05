@@ -8,8 +8,9 @@ import { Authenticator } from '../../services/Authenticator';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    model: any = {};
-    loading = false;
+    private model: any = {};
+    private loading = false;
+    private invalidLoginAndPassword = false;
 
     constructor(
         private router: Router,
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
                 error => {
                     console.log(error);
                     this.loading = false;
+
+                    if (error.status == 403) {
+                        this.invalidLoginAndPassword = true;
+                    }
                 }
             );
     }
