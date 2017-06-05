@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Authenticator } from '../../services/Authenticator';
 
 @Component({
@@ -10,7 +10,6 @@ import { Authenticator } from '../../services/Authenticator';
 export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
-    returnUrl: string = '/';
 
     constructor(
         private router: Router,
@@ -24,10 +23,10 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.loading = true;
-        this.authenticator.login(this.model.username, this.model.password)
+        this.authenticator.login(this.model.email, this.model.password)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    this.router.navigate(['/']);
                 },
                 error => {
                     console.log(error);

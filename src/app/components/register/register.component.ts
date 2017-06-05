@@ -19,7 +19,12 @@ export class RegisterComponent {
 
     register() {
         this.loading = true;
-        this.authenticator.register(this.model)
+        this.authenticator.register(
+            this.model.email,
+            this.model.password,
+            this.model.name,
+            this.model.flatNumber
+        )
             .subscribe(
                 data => {
                     this.router.navigate(['/']);
