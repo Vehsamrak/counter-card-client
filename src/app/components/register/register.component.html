@@ -16,7 +16,7 @@
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
-                   required/>
+                   pattern="{{ emailPattern }}" required/>
             <div *ngIf="f.submitted && !email.valid" class="help-block">Email обязателен для заполнения</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">

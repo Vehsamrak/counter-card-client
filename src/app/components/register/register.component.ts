@@ -8,8 +8,9 @@ import { Authenticator } from '../../services/Authenticator';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-    model: any = {};
-    loading = false;
+    private model: any = {};
+    private loading = false;
+    private emailPattern: string = '.+@.+\..+';
 
     constructor(
         private router: Router,
