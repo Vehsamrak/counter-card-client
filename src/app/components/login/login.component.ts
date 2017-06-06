@@ -8,7 +8,7 @@ import { Authenticator } from '../../services/Authenticator';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    private invalidLoginAndPassword = false;
+    private invalidLoginAndPassword: boolean = false;
     private submitted: boolean = false;
     private loading: boolean = false;
     private model: any = {};

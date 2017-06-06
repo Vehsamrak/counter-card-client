@@ -12,6 +12,7 @@ export class RegisterComponent {
     private loading = false;
     private emailPattern: string = '.+@.+\..+';
     private submitted: boolean = false;
+    private nonUniqueEmailOrFlatNumber: boolean = false;
 
     constructor(
         private router: Router,
@@ -38,6 +39,7 @@ export class RegisterComponent {
                     error => {
                         console.log(error);
                         this.loading = false;
+                        this.nonUniqueEmailOrFlatNumber = true;
                     }
                 );
         }
