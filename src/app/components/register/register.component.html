@@ -1,35 +1,53 @@
-<div>
-    <h2>Регистрация</h2>
-    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="name">Имя, фамилия и отчество</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel"
-                   required/>
-            <div *ngIf="f.submitted && !name.valid" class="help-block">ФИО обязательно для заполнения</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="flatNumber">Номер квартиры</label>
-            <input type="text" class="form-control" name="flatNumber" [(ngModel)]="model.flatNumber" #flatNumber="ngModel"
-                   required/>
-            <div *ngIf="f.submitted && !flatNumber.valid" class="help-block">Номер квартиры обязателен для заполнения</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
-                   pattern="{{ emailPattern }}" required/>
-            <div *ngIf="f.submitted && !email.valid" class="help-block">Email обязателен для заполнения</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password">Пароль</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
-                   required/>
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Пароль обязателен для заполнения</div>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Зарегистрироваться</button>
-            <img *ngIf="loading"
-                 src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-            <a [routerLink]="['/login']" class="btn btn-link">Отмена</a>
-        </div>
-    </form>
+<div class="spacer"></div>
+<div class="spacer"></div>
+
+<div class="center">
+    <div>
+        <h2>Регистрация</h2>
+        <form name="form" (ngSubmit)="submitForm(form.value)" #form="ngForm" novalidate>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="username" type="text" class="mdl-textfield__input" name="username" [(ngModel)]="model.username">
+                    <label class="mdl-textfield__label" for="username">Фамилия, имя и отчество</label>
+                    <div *ngIf="!model.username && submitted" class="sub-error">ФИО не может быть пустым!</div>
+                </div>
+            </div>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="flatNumber" type="text" class="mdl-textfield__input" name="flatNumber" [(ngModel)]="model.flatNumber">
+                    <label class="mdl-textfield__label" for="flatNumber">Номер квартиры</label>
+                    <div *ngIf="!model.flatNumber && submitted" class="sub-error">Номер квартиры не может быть пустым!</div>
+                </div>
+            </div>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="email" type="text" class="mdl-textfield__input" name="email" [(ngModel)]="model.email">
+                    <label class="mdl-textfield__label" for="email">Email</label>
+                    <div *ngIf="!model.email && submitted" class="sub-error">Email не может быть пустым!</div>
+                    <div *ngIf="model.email && !emailIsValid()" class="sub-error">Email неверный</div>
+                </div>
+            </div>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="password" type="text" class="mdl-textfield__input" name="password" [(ngModel)]="model.password">
+                    <label class="mdl-textfield__label" for="password">Пароль</label>
+                    <div *ngIf="!model.password && submitted" class="sub-error">Пароль не может быть пустым!</div>
+                </div>
+            </div>
+
+            <div class="submit-box">
+                <button type="button" [routerLink]="['/login']"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    Назад
+                </button>
+                <button type="submit" [disabled]="loading"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect colored-button">
+                    Зарегистрироваться
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
+
+<div class="spacer"></div>
+<div class="spacer"></div>

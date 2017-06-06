@@ -10,7 +10,7 @@ import { Authenticator } from '../../services/Authenticator';
 export class LoginComponent implements OnInit {
     private invalidLoginAndPassword = false;
     private submitted: boolean = false;
-    private submitButtonEnabled: boolean = true;
+    private loading: boolean = false;
     private model: any = {};
 
     constructor(
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
         this.submitted = true;
 
         if (this.formIsValid(form)) {
-            this.submitButtonEnabled = false;
+            this.loading = true;
 
             this.authenticator.login(form.email, form.password)
                 .subscribe(
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
                     },
                     error => {
                         console.log(error);
+                        this.loading = false;
                         this.invalidLoginAndPassword = true;
                     }
                 );

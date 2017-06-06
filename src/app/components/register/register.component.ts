@@ -11,6 +11,7 @@ export class RegisterComponent {
     private model: any = {};
     private loading = false;
     private emailPattern: string = '.+@.+\..+';
+    private submitted: boolean = false;
 
     constructor(
         private router: Router,
@@ -18,21 +19,37 @@ export class RegisterComponent {
     ) {
     }
 
-    register() {
-        this.loading = true;
-        this.authenticator.register(
-            this.model.email,
-            this.model.password,
-            this.model.name,
-            this.model.flatNumber
-        )
-            .subscribe(
-                data => {
-                    this.router.navigate(['/']);
-                },
-                error => {
-                    this.loading = false;
-                }
-            );
+    submitForm(form: any) {
+        this.submitted = true;
+
+        if (this.formIsValid(form)) {
+            this.loading = true;
+
+            this.authenticator.register(
+                this.model.email,
+                this.model.password,
+                this.model.username,
+                this.model.flatNumber
+            )
+                .subscribe(
+                    data => {
+                        this.router.navigate(['/']);
+                    },
+                    error => {
+                        console.log(error);
+                        this.loading = false;
+                    }
+                );
+        }
+    }
+
+    private formIsValid(form): boolean {
+        return form.email && form.password && form.username && form.flatNumber && this.emailIsValid();
+    }
+
+    emailIsValid(): boolean {
+        let regexp = new RegExp(this.emailPattern);
+
+        return regexp.test(this.model.email);
     }
 }
