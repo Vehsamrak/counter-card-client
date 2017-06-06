@@ -65,3 +65,20 @@ p {
     display: block;
     height: 30px;
 }
+
+.sub-error {
+    color: #d50000;
+    position: absolute;
+    font-size: 12px;
+    margin-top: 3px;
+    display: block;
+    cursor: default;
+}
+
+.sub-error-center {
+    color: #d50000;
+    font-size: 16px;
+    margin-top: 3px;
+    display: block;
+    cursor: default;
+}

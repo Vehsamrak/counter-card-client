@@ -8,9 +8,10 @@ import { Authenticator } from '../../services/Authenticator';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    private model: any = {};
-    private loading = false;
     private invalidLoginAndPassword = false;
+    private submitted: boolean = false;
+    private submitButtonEnabled: boolean = true;
+    private model: any = {};
 
     constructor(
         private router: Router,
@@ -22,21 +23,26 @@ export class LoginComponent implements OnInit {
         this.authenticator.logout();
     }
 
-    login() {
-        this.loading = true;
-        this.authenticator.login(this.model.email, this.model.password)
-            .subscribe(
-                data => {
-                    this.router.navigate(['/']);
-                },
-                error => {
-                    console.log(error);
-                    this.loading = false;
+    submitForm(form: any) {
+        this.submitted = true;
 
-                    if (error.status == 403) {
+        if (this.formIsValid(form)) {
+            this.submitButtonEnabled = false;
+
+            this.authenticator.login(form.email, form.password)
+                .subscribe(
+                    data => {
+                        this.router.navigate(['/']);
+                    },
+                    error => {
+                        console.log(error);
                         this.invalidLoginAndPassword = true;
                     }
-                }
-            );
+                );
+        }
+    }
+
+    private formIsValid(form): boolean {
+        return form.email && form.password;
     }
 }
