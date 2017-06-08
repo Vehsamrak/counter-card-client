@@ -12,6 +12,7 @@ import { Authenticator } from './services/Authenticator';
 import { AuthGuard } from './services/security/AuthGuard';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClient } from './services/http/HttpClient';
+import { UserService } from './services/user/UserService';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { HttpClient } from './services/http/HttpClient';
     providers: [
         AuthGuard,
         Authenticator,
-        HttpClient
+        HttpClient,
+        UserService
     ],
     bootstrap: [AppComponent]
 })
