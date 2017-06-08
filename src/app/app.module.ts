@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { Authenticator } from './services/Authenticator';
 import { AuthGuard } from './services/security/AuthGuard';
 import { RegisterComponent } from './components/register/register.component';
+import { HttpClient } from './services/http/HttpClient';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { RegisterComponent } from './components/register/register.component';
     ],
     providers: [
         AuthGuard,
-        Authenticator
+        Authenticator,
+        HttpClient
     ],
     bootstrap: [AppComponent]
 })
