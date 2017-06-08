@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Authenticator } from "./services/Authenticator";
+import { Authenticator } from './services/Authenticator';
+import { UserService } from './services/user/UserService';
 
 @Component({
     selector: 'application',
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    private flatNumber: number;
-    private ownerName: string;
 
     public constructor(
         private router: Router,
         private authenticator: Authenticator,
+        private userService: UserService
     ) {
-        this.flatNumber = 10;
-        this.ownerName = 'Грозный Иван Васильевич';
+        this.userService.requestUser();
 
         router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationEnd) {
@@ -32,5 +31,13 @@ export class AppComponent {
 
     isAuthenticated(): boolean {
         return this.authenticator.isAuthenticated();
+    }
+
+    public getFlatNumber(): number {
+        return this.userService.getFlatNumber();
+    }
+
+    public getUserName(): string {
+        return this.userService.getUserName();
     }
 }

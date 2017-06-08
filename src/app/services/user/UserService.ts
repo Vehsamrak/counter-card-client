@@ -31,7 +31,7 @@ export class UserService {
             .subscribe(result => {
                 const responseData = result.json();
                 this.setUserName(responseData.name);
-                this.setFlatNumber(responseData.name);
+                this.setFlatNumber(responseData.flatNumber);
             });
     }
 }
