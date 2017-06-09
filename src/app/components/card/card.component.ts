@@ -43,7 +43,15 @@ export class CardComponent {
     }
 
     public getDaysToDeadline(): number {
-        return 0;
+        let oneDay = 24 * 60 * 60 * 1000;
+        let today = new Date();
+        let secondDate = new Date(today.getFullYear(), today.getMonth(), 20);
+
+        if (today.getDay() > 20) {
+            return 0;
+        }
+
+        return Math.round(Math.abs((today.getTime() - secondDate.getTime()) / (oneDay)));
     }
 
     public submitForm(form: any): void {
