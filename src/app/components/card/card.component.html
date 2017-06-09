@@ -1,48 +1,69 @@
-<div class="center">
-    <h3>Отправка показаний счетчиков за {{ getCurrentMonth() }}</h3>
-    <p>Показания принимаются до 20 числа включительно. До отправки показаний за {{ getCurrentMonth() }} осталось {{ getDaysToDeadline() }}
-        дней.</p>
-</div>
-<div class="spacer"></div>
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col center">
-        <form #form="ngForm" (ngSubmit)="submitForm(form.value)" action="#">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input [(ngModel)]="waterHot" name="waterHot" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="waterHot">
-                <label class="mdl-textfield__label" for="waterHot">Горячая вода</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
-                <span *ngIf="!waterHot && submitted" class="sub-error">Показания не могут быть пустыми!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input [(ngModel)]="waterCold" name="waterCold" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="waterCold">
-                <label class="mdl-textfield__label" for="waterCold">Холодная вода</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
-                <span *ngIf="!waterCold && submitted" class="sub-error">Показания не могут быть пустыми!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input [(ngModel)]="electricityDay" name="electricityDay" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="electricityDay">
-                <label class="mdl-textfield__label" for="electricityDay">Электричество
-                    (день)</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
-                <span *ngIf="!electricityDay && submitted" class="sub-error">Показания не могут быть пустыми!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input [(ngModel)]="electricityNight" name="electricityNight" class="mdl-textfield__input" type="text" pattern="{{ numericPattern }}" id="electricityNight">
-                <label class="mdl-textfield__label" for="electricityNight">Электричество
-                    (ночь)</label>
-                <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
-                <span *ngIf="!electricityNight && submitted" class="sub-error">Показания не могут быть пустыми!</span>
-            </div>
-
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-
-            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect colored-button" [disabled]="!submitButtonEnabled">
-                {{ buttonText }}
-            </button>
-        </form>
-
-        <div class="spacer"></div>
-        <div class="spacer"></div>
+<div *ngIf="getDaysToDeadline()">
+    <div class="center">
+        <h3>Отправка показаний счетчиков за {{ getCurrentMonth() }}</h3>
+        <p>Показания принимаются с 1 по 20 число включительно.
+            Для отправки показаний за {{ getCurrentMonth() }} осталось {{ getDaysToDeadline() }} дней.</p>
     </div>
+    <div class="spacer"></div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col center">
+            <form #form="ngForm" (ngSubmit)="submitForm(form.value)" action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input [(ngModel)]="waterHot" name="waterHot" class="mdl-textfield__input" type="text"
+                           pattern="{{ numericPattern }}" id="waterHot">
+                    <label class="mdl-textfield__label" for="waterHot">Горячая вода</label>
+                    <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
+                    <span *ngIf="!waterHot && submitted" class="sub-error">Показания не могут быть пустыми!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input [(ngModel)]="waterCold" name="waterCold" class="mdl-textfield__input" type="text"
+                           pattern="{{ numericPattern }}" id="waterCold">
+                    <label class="mdl-textfield__label" for="waterCold">Холодная вода</label>
+                    <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
+                    <span *ngIf="!waterCold && submitted" class="sub-error">Показания не могут быть пустыми!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input [(ngModel)]="electricityDay" name="electricityDay" class="mdl-textfield__input" type="text"
+                           pattern="{{ numericPattern }}" id="electricityDay">
+                    <label class="mdl-textfield__label" for="electricityDay">Электричество
+                        (день)</label>
+                    <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
+                    <span *ngIf="!electricityDay && submitted" class="sub-error">Показания не могут быть пустыми!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input [(ngModel)]="electricityNight" name="electricityNight" class="mdl-textfield__input"
+                           type="text"
+                           pattern="{{ numericPattern }}" id="electricityNight">
+                    <label class="mdl-textfield__label" for="electricityNight">Электричество
+                        (ночь)</label>
+                    <span class="mdl-textfield__error">Показания могут содержать только цифры и одну точку или запятую!</span>
+                    <span *ngIf="!electricityNight && submitted"
+                          class="sub-error">Показания не могут быть пустыми!</span>
+                </div>
+
+                <div class="spacer"></div>
+                <div class="spacer"></div>
+
+                <button type="submit"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect colored-button"
+                        [disabled]="!submitButtonEnabled">
+                    {{ buttonText }}
+                </button>
+            </form>
+
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!getDaysToDeadline()">
+    <div class="center">
+        <h3>Сбор показаний за {{ getCurrentMonth() }} завершен</h3>
+        <p>Показания принимаются с <strong>1</strong> по <strong>20</strong> число включительно.</p>
+        <p>Вы не отправляли показаний в этом месяце.</p>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
 </div>
