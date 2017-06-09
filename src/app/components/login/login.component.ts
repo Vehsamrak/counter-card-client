@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         if (this.formIsValid(form)) {
             this.loading = true;
 
-            this.authenticator.login(form.email, form.password)
+            this.authenticator.login(form.login, form.password)
                 .subscribe(
                     data => {
                         this.router.navigate(['/']);
@@ -47,6 +47,6 @@ export class LoginComponent implements OnInit {
     }
 
     private formIsValid(form): boolean {
-        return form.email && form.password;
+        return form.login && form.password;
     }
 }

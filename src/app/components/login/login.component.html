@@ -6,9 +6,9 @@
     <form name="form" (ngSubmit)="submitForm(form.value)" #form="ngForm" novalidate>
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input id="email" type="text" class="mdl-textfield__input" name="email" [(ngModel)]="model.email">
-                <label class="mdl-textfield__label" for="email">Email</label>
-                <div *ngIf="!model.email && submitted" class="sub-error">Email не может быть пустым!</div>
+                <input id="login" type="text" class="mdl-textfield__input" name="login" [(ngModel)]="model.login">
+                <label class="mdl-textfield__label" for="login">Email или номер квартиры</label>
+                <div *ngIf="!model.login && submitted" class="sub-error">Email или номер квартиры не может быть пустым!</div>
             </div>
         </div>
         <div>
