@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
+import { HttpClient } from '../../services/http/HttpClient';
 
 @Component({
     selector: 'app-card',
@@ -20,7 +20,7 @@ export class CardComponent {
     private electricityDay: string = '';
     private electricityNight: string = '';
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
     }
 
     public getCurrentMonth(): string {
