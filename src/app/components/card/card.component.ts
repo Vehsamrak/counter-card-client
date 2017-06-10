@@ -45,7 +45,7 @@ export class CardComponent {
     public getDaysToDeadline(): number {
         let oneDay = 24 * 60 * 60 * 1000;
         let today = new Date();
-        let secondDate = new Date(today.getFullYear(), today.getMonth(), 20);
+        let secondDate = new Date(today.getFullYear(), today.getMonth(), 21);
 
         if (today.getDay() > 20) {
             return 0;
