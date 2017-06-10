@@ -9,12 +9,19 @@ import { HttpClient } from '../../services/http/HttpClient';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+    public numericPattern: string = '[0-9]+([\.,])?([0-9]+)?';
+    public buttonText: string = 'Отправить показания счетчиков';
+    public buttonStyle = {};
+    public buttonError = false;
+
     private apiUrl = environment.apiUrl + '/api/card';
-    private numericPattern: string = '[0-9]+([\.,])?([0-9]+)?';
     private submitted: boolean = false;
     private submitButtonEnabled: boolean = true;
-    public buttonText: string = 'Отправить показания счетчиков';
-
+    private errorButtonStyle = {
+        background: 'rgb(220, 41, 41)',
+        color: 'white',
+        fontWeight: 600,
+    };
     private waterHot: string = '';
     private waterCold: string = '';
     private electricityDay: string = '';
@@ -57,11 +64,17 @@ export class CardComponent {
     public submitForm(form: any): void {
         if (this.formIsValid(form)) {
             this.submitButtonEnabled = false;
-            this.buttonText = 'Показания отправлены';
 
             this.http.post(this.apiUrl, form).subscribe(
-                (data) => console.log(data),
-                (error) => console.log(error)
+                (data) => {
+                    this.buttonText = 'Показания отправлены';
+                },
+                (error) => {
+                    this.buttonError = true;
+                    this.buttonText = 'Показания не отправлены';
+                    this.buttonStyle = this.errorButtonStyle;
+                    return console.log(error);
+                }
             );
         }
 

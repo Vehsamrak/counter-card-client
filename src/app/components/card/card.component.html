@@ -45,11 +45,19 @@
                 <div class="spacer"></div>
 
                 <button type="submit"
+                        [style.background-color]="buttonStyle.background"
+                        [style.color]="buttonStyle.color"
+                        [style.font-weight]="buttonStyle.fontWeight"
                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect colored-button"
                         [disabled]="!submitButtonEnabled">
                     {{ buttonText }}
                 </button>
             </form>
+
+            <div *ngIf="buttonError" class="sub-error-center">
+                <div class="spacer"></div>
+                <p>Вы уже отправляли показания в этом месяце</p>
+            </div>
 
             <div class="spacer"></div>
             <div class="spacer"></div>
