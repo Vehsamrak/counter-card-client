@@ -82,3 +82,7 @@ p {
     display: block;
     cursor: default;
 }
+
+footer a:hover {
+    color: #c4c4c4;
+}
