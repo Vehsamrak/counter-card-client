@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClient } from './services/http/HttpClient';
 import { UserService } from './services/user/UserService';
 import { CardService } from './services/card/CardService';
+import { Pluralizer } from './services/Pluralizer';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { CardService } from './services/card/CardService';
         Authenticator,
         HttpClient,
         UserService,
-        CardService
+        CardService,
+        Pluralizer
     ],
     bootstrap: [AppComponent]
 })

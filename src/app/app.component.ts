@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Authenticator } from './services/Authenticator';
 import { UserService } from './services/user/UserService';
-import { CardService } from "./services/card/CardService";
+import { CardService } from './services/card/CardService';
+import { Pluralizer } from './services/Pluralizer';
 
 @Component({
     selector: 'application',
@@ -14,7 +15,8 @@ export class AppComponent {
         private router: Router,
         private authenticator: Authenticator,
         private userService: UserService,
-        private cardService: CardService
+        private cardService: CardService,
+        private pluralizer: Pluralizer
     ) {
         this.userService.requestUser();
         this.cardService.requestLastCard();
@@ -42,5 +44,9 @@ export class AppComponent {
 
     public getUserName(): string {
         return this.userService.getUserName();
+    }
+
+    public pluralize(number, one, two, five): string {
+        return this.pluralizer.pluralize(number, one, two, five);
     }
 }
