@@ -15,8 +15,7 @@ export class AppComponent {
         private router: Router,
         private authenticator: Authenticator,
         private userService: UserService,
-        private cardService: CardService,
-        private pluralizer: Pluralizer
+        private cardService: CardService
     ) {
         this.userService.requestUser();
         this.cardService.requestLastCard();
@@ -44,9 +43,5 @@ export class AppComponent {
 
     public getUserName(): string {
         return this.userService.getUserName();
-    }
-
-    public pluralize(number, one, two, five): string {
-        return this.pluralizer.pluralize(number, one, two, five);
     }
 }

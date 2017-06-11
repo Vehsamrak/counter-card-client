@@ -3,6 +3,7 @@ import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '../../services/http/HttpClient';
 import { CardService } from '../../services/card/CardService';
+import { Pluralizer } from '../../services/Pluralizer';
 
 @Component({
     selector: 'app-card',
@@ -30,6 +31,7 @@ export class CardComponent {
 
     constructor(
         private http: HttpClient,
+        public pluralizer: Pluralizer,
         public cardService: CardService
     ) {
     }
