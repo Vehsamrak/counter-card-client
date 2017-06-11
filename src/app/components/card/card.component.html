@@ -1,5 +1,5 @@
-<div *ngIf="!this.cardService.loading">
-    <div *ngIf="getDaysToDeadline() || !cardWasSentInThisMonth()">
+<div [ngClass]='{hidden: this.cardService.loading}'>
+    <div *ngIf="getDaysToDeadline() && !cardWasSentInThisMonth()">
         <div class="center">
             <h3>Отправка показаний счетчиков за {{ getCurrentMonth() }}</h3>
             <p>Показания принимаются с 1 по 20 число включительно.
