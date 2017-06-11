@@ -4,8 +4,9 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CardService {
-    private lastCardSentTimestamp: number;
     public loading = true;
+    private lastCardSentTimestamp: number;
+    private cards: {};
 
     constructor(private httpClient: HttpClient) {
     }
@@ -22,6 +23,21 @@ export class CardService {
                     if (error.status = 404) {
                         this.lastCardSentTimestamp = 0;
                     }
+
+                    this.loading = false;
+                }
+            );
+    }
+
+    public requestAllCards(): void {
+        this.httpClient.get(environment.apiUrl + '/api/cards')
+            .subscribe(
+                result => {
+                    this.cards = result.json();
+                    this.loading = false;
+                },
+                error => {
+                    console.log(error);
 
                     this.loading = false;
                 }

@@ -19,6 +19,7 @@ export class AppComponent {
     ) {
         this.userService.requestUser();
         this.cardService.requestLastCard();
+        this.cardService.requestAllCards();
 
         router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationEnd) {
