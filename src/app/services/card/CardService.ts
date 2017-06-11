@@ -4,29 +4,34 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CardService {
-    private cardSendEnable = true;
+    private lastCardSentTimestamp: number;
+    public loading = true;
 
     constructor(private httpClient: HttpClient) {
     }
 
-    public isCardSendEnable(): boolean {
-        return this.cardSendEnable;
-    }
-
-    public setCardSendEnable(cardSendEnable: boolean) {
-        this.cardSendEnable = cardSendEnable;
-    }
-
     public requestLastCard(): void {
         this.httpClient.get(environment.apiUrl + '/api/card/last')
-            .subscribe(result => {
-                const responseData = result.json();
+            .subscribe(
+                result => {
+                    const responseData = result.json();
+                    this.lastCardSentTimestamp = responseData.createdAt * 1000;
+                    this.loading = false;
+                },
+                error => {
+                    if (error.status = 404) {
+                        this.lastCardSentTimestamp = 0;
+                    }
 
-                const ago20days = new Date();
-                ago20days.setDate(ago20days.getDate() - 20);
-                const ago20daysTimestamp = Math.round(ago20days.getTime() / 1000);
+                    this.loading = false;
+                }
+            );
+    }
 
-                this.cardSendEnable = responseData.createdAt < ago20daysTimestamp;
-            });
+    public cardWasSentInThisMonth(): boolean {
+        const now = new Date();
+        const firstDayOfCurrentMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+
+        return this.lastCardSentTimestamp > firstDayOfCurrentMonth.getTime();
     }
 }

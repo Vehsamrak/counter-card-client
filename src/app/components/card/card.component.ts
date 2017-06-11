@@ -30,7 +30,7 @@ export class CardComponent {
 
     constructor(
         private http: HttpClient,
-        private cardService: CardService
+        public cardService: CardService
     ) {
     }
 
@@ -56,7 +56,7 @@ export class CardComponent {
     public getDaysToDeadline(): number {
         let oneDay = 24 * 60 * 60 * 1000;
         let today = new Date();
-        let secondDate = new Date(today.getFullYear(), today.getMonth(), 21);
+        let secondDate = new Date(today.getFullYear(), today.getMonth(), 22);
 
         if (today.getDay() > 20) {
             return 0;
@@ -72,7 +72,7 @@ export class CardComponent {
             this.http.post(this.apiUrl, form).subscribe(
                 (data) => {
                     this.buttonText = 'Показания отправлены';
-                    this.cardService.setCardSendEnable(false);
+                    this.cardService.requestLastCard();
                 },
                 (error) => {
                     this.buttonError = true;
@@ -86,8 +86,8 @@ export class CardComponent {
         this.submitted = true;
     }
 
-    public isCardSendEnable(): boolean {
-        return this.cardService.isCardSendEnable();
+    public cardWasSentInThisMonth(): boolean {
+        return this.cardService.cardWasSentInThisMonth();
     }
 
     private formIsValid(form: any): boolean {
