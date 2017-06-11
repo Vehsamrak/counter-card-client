@@ -1,4 +1,4 @@
-<div *ngIf="getDaysToDeadline()">
+<div *ngIf="getDaysToDeadline() && isCardSendEnable()">
     <div class="center">
         <h3>Отправка показаний счетчиков за {{ getCurrentMonth() }}</h3>
         <p>Показания принимаются с 1 по 20 число включительно.

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '../../services/http/HttpClient';
+import { CardService } from '../../services/card/CardService';
 
 @Component({
     selector: 'app-card',
@@ -27,7 +28,10 @@ export class CardComponent {
     private electricityDay: string = '';
     private electricityNight: string = '';
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private http: HttpClient,
+        private cardService: CardService
+    ) {
     }
 
     public getCurrentMonth(): string {
@@ -68,6 +72,7 @@ export class CardComponent {
             this.http.post(this.apiUrl, form).subscribe(
                 (data) => {
                     this.buttonText = 'Показания отправлены';
+                    this.cardService.setCardSendEnable(false);
                 },
                 (error) => {
                     this.buttonError = true;
@@ -79,6 +84,10 @@ export class CardComponent {
         }
 
         this.submitted = true;
+    }
+
+    public isCardSendEnable(): boolean {
+        return this.cardService.isCardSendEnable();
     }
 
     private formIsValid(form: any): boolean {

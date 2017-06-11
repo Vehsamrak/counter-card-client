@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Authenticator } from './services/Authenticator';
 import { UserService } from './services/user/UserService';
+import { CardService } from "./services/card/CardService";
 
 @Component({
     selector: 'application',
@@ -12,9 +13,11 @@ export class AppComponent {
     public constructor(
         private router: Router,
         private authenticator: Authenticator,
-        private userService: UserService
+        private userService: UserService,
+        private cardService: CardService
     ) {
         this.userService.requestUser();
+        this.cardService.requestLastCard();
 
         router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationEnd) {

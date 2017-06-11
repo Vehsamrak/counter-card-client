@@ -13,6 +13,7 @@ import { AuthGuard } from './services/security/AuthGuard';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClient } from './services/http/HttpClient';
 import { UserService } from './services/user/UserService';
+import { CardService } from './services/card/CardService';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { UserService } from './services/user/UserService';
         AuthGuard,
         Authenticator,
         HttpClient,
-        UserService
+        UserService,
+        CardService
     ],
     bootstrap: [AppComponent]
 })
