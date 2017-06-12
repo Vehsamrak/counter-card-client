@@ -42,6 +42,11 @@
                     Зарегистрироваться
                 </button>
 
+                <span *ngIf="sameIpRegistration" class="center sub-error-center">
+                    С данного IP уже было зарегистрировано 3 человека.<br>
+                    Пожалуйста, зарегистрируйтесь из другого подключения к интернет, или обратитесь к администратору:
+                    sirsmonkl<img src="/assets/email-small.png" alt="">gmail.com
+                </span>
                 <span *ngIf="nonUniqueEmailOrFlatNumber" class="center sub-error-center">
                     Данный email или номер квартиры уже зарегистрирован!
                 </span>

@@ -8,6 +8,7 @@ import { Authenticator } from '../../services/Authenticator';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+    public sameIpRegistration: boolean = false;
     private model: any = {};
     private loading = false;
     private emailPattern: string = '.+@.+\..+';
@@ -39,7 +40,13 @@ export class RegisterComponent {
                     error => {
                         console.log(error);
                         this.loading = false;
-                        this.nonUniqueEmailOrFlatNumber = true;
+
+                        if (error.status === 403) {
+                            this.sameIpRegistration = true;
+                            this.nonUniqueEmailOrFlatNumber = false;
+                        } else {
+                            this.nonUniqueEmailOrFlatNumber = true;
+                        }
                     }
                 );
         }
