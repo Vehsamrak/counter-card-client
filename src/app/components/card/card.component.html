@@ -4,7 +4,9 @@
             <h3>Отправка показаний счетчиков за {{ getCurrentMonth() }}</h3>
             <p>
                 Показания принимаются с 1 по 20 число включительно.
-                Для отправки показаний за {{ getCurrentMonth() }} осталось {{ getDaysToDeadline() }}
+                Для отправки показаний за {{ getCurrentMonth() }}
+                {{ this.pluralizer.pluralize(getDaysToDeadline(), 'остался', 'осталось', 'осталось') }}
+                {{ getDaysToDeadline() }}
                 {{ this.pluralizer.pluralize(getDaysToDeadline(), 'день', 'дня', 'дней') }}.
             </p>
         </div>
