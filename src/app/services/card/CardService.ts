@@ -50,4 +50,8 @@ export class CardService {
 
         return this.lastCardSentTimestamp > firstDayOfCurrentMonth.getTime();
     }
+
+    public getCards() {
+        return this.cards;
+    }
 }

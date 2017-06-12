@@ -86,9 +86,3 @@ p {
 footer a:hover {
     color: #c4c4c4;
 }
-
-p {
-    text-align: justify;
-    word-spacing: -0.3ex;
-    padding: 15px;
-}

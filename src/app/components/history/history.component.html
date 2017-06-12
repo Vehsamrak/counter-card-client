@@ -16,26 +16,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td class="mdl-data-table__cell--non-numeric">июнь</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-    </tr>
-    <tr>
-        <td class="mdl-data-table__cell--non-numeric">май</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-    </tr>
-    <tr>
-        <td class="mdl-data-table__cell--non-numeric">апрель</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
+    <tr *ngFor="let card of getCards(); let i = index;">
+        <td class="mdl-data-table__cell--non-numeric">{{ getCardMonthName(card.createdAt) }}</td>
+        <td>{{ card.waterHot }}</td>
+        <td>{{ card.waterCold }}</td>
+        <td>{{ card.electricityDay }}</td>
+        <td>{{ card.electricityNight }}</td>
     </tr>
     </tbody>
 </table>
