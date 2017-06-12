@@ -37,8 +37,6 @@ export class CardService {
                     this.loading = false;
                 },
                 error => {
-                    console.log(error);
-
                     this.loading = false;
                 }
             );

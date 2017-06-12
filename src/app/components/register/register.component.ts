@@ -39,7 +39,6 @@ export class RegisterComponent {
                         this.router.navigate(['/']);
                     },
                     error => {
-                        console.log(error);
                         this.loading = false;
 
                         if (error.status === 403) {
