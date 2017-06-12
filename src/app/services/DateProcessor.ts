@@ -25,7 +25,29 @@ export class DateProcessor {
         return months;
     }
 
+    public getMonthNamesGenetive(): object {
+        const months = [];
+        months[0] = 'января';
+        months[1] = 'февраля';
+        months[2] = 'марта';
+        months[3] = 'апреля';
+        months[4] = 'мая';
+        months[5] = 'июня';
+        months[6] = 'июля';
+        months[7] = 'августа';
+        months[8] = 'сентября';
+        months[9] = 'октября';
+        months[10] = 'ноября';
+        months[11] = 'декабря';
+
+        return months;
+    }
+
     public getMonthName(month: number): string {
         return this.getMonthNames()[month];
+    }
+
+    getMonthNameGenetive(month: number) {
+        return this.getMonthNamesGenetive()[month];
     }
 }

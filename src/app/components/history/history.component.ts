@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CardService } from "../../services/card/CardService";
-import { DateProcessor } from "../../services/DateProcessor";
+import { CardService } from '../../services/card/CardService';
+import { DateProcessor } from '../../services/DateProcessor';
 
 @Component({
     selector: 'component-history',
@@ -21,7 +21,8 @@ export class HistoryComponent {
 
     public getCardMonthName(cardTimestamp: number) {
         let date = new Date(cardTimestamp * 1000);
-        return this.dateProcessor.getMonthName(date.getMonth());
+
+        return this.dateProcessor.getMonthNameGenetive(date.getMonth());
     }
 
     public getCardDay(cardTimestamp: number) {
