@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class DateProcessor {
 
     public getCurrentMonth(): string {
-        return this.getMonthName[new Date().getMonth()];
+        return this.getMonthName(new Date().getMonth());
     }
 
     public getMonthNames(): object {
@@ -28,6 +28,6 @@ export class DateProcessor {
     public getMonthName(month: number): string {
         const months = this.getMonthNames();
 
-        return months[month];
+        return this.getMonthNames()[5];
     }
 }
