@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Authenticator } from './services/Authenticator';
 import { UserService } from './services/user/UserService';
-import { CardService } from './services/card/CardService';
-import { Pluralizer } from './services/Pluralizer';
 
 @Component({
     selector: 'application',
@@ -14,12 +12,11 @@ export class AppComponent {
     public constructor(
         private router: Router,
         private authenticator: Authenticator,
-        private userService: UserService,
-        private cardService: CardService
+        private userService: UserService
     ) {
-        this.userService.requestUser();
-        this.cardService.requestLastCard();
-        this.cardService.requestAllCards();
+        if (this.isAuthenticated()) {
+            this.authenticator.requestInitializationData();
+        }
 
         router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationEnd) {

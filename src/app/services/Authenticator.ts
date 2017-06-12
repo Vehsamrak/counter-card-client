@@ -2,12 +2,18 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
+import { UserService } from './user/UserService';
+import { CardService } from './card/CardService';
 
 @Injectable()
 export class Authenticator {
     private currentTokenStorageKey = 'currentToken';
 
-    constructor(private http: Http) {
+    constructor(
+        private http: Http,
+        private userService: UserService,
+        private cardService: CardService
+    ) {
     }
 
     login(email: string, password: string) {
@@ -42,5 +48,11 @@ export class Authenticator {
 
     public isAuthenticated(): boolean {
         return localStorage.getItem(this.currentTokenStorageKey) !== null;
+    }
+
+    public requestInitializationData(): void {
+        this.userService.requestUser();
+        this.cardService.requestLastCard();
+        this.cardService.requestAllCards();
     }
 }

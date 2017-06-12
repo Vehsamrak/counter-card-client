@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Authenticator } from '../../services/Authenticator';
-import { CardService } from '../../services/card/CardService';
-import { UserService } from '../../services/user/UserService';
 
 @Component({
     selector: 'app-register',
@@ -19,9 +17,7 @@ export class RegisterComponent {
 
     constructor(
         private router: Router,
-        private authenticator: Authenticator,
-        private userService: UserService,
-        private cardService: CardService
+        private authenticator: Authenticator
     ) {
     }
 
@@ -39,9 +35,7 @@ export class RegisterComponent {
             )
                 .subscribe(
                     data => {
-                        this.userService.requestUser();
-                        this.cardService.requestLastCard();
-                        this.cardService.requestAllCards();
+                        this.authenticator.requestInitializationData();
                         this.router.navigate(['/']);
                     },
                     error => {
