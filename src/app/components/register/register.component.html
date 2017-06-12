@@ -5,8 +5,8 @@
             <div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input id="username" type="text" class="mdl-textfield__input" name="username" [(ngModel)]="model.username">
-                    <label class="mdl-textfield__label" for="username">Фамилия, имя и отчество</label>
-                    <div *ngIf="!model.username && submitted" class="sub-error">ФИО не может быть пустым!</div>
+                    <label class="mdl-textfield__label" for="username">Имя</label>
+                    <div *ngIf="!model.username && submitted" class="sub-error">Имя не может быть пустым!</div>
                 </div>
             </div>
             <div>
