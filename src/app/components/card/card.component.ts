@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '../../services/http/HttpClient';
 import { CardService } from '../../services/card/CardService';
 import { Pluralizer } from '../../services/Pluralizer';
+import { DateProcessor } from "../../services/DateProcessor";
 
 @Component({
     selector: 'app-card',
@@ -32,27 +33,13 @@ export class CardComponent {
     constructor(
         private http: HttpClient,
         public pluralizer: Pluralizer,
-        public cardService: CardService
+        public cardService: CardService,
+        private dateProcessor: DateProcessor
     ) {
     }
 
     public getCurrentMonth(): string {
-        let date = new Date();
-        let month = [];
-        month[0] = 'январь';
-        month[1] = 'февраль';
-        month[2] = 'март';
-        month[3] = 'апрель';
-        month[4] = 'май';
-        month[5] = 'июнь';
-        month[6] = 'июль';
-        month[7] = 'август';
-        month[8] = 'сентябрь';
-        month[9] = 'октябрь';
-        month[10] = 'ноябрь';
-        month[11] = 'декабрь';
-
-        return month[date.getMonth()];
+        return this.dateProcessor.getCurrentMonth();
     }
 
     public getDaysToDeadline(): number {

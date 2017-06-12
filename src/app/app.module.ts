@@ -15,6 +15,7 @@ import { HttpClient } from './services/http/HttpClient';
 import { UserService } from './services/user/UserService';
 import { CardService } from './services/card/CardService';
 import { Pluralizer } from './services/Pluralizer';
+import { DateProcessor } from "./services/DateProcessor";
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { Pluralizer } from './services/Pluralizer';
         HttpClient,
         UserService,
         CardService,
-        Pluralizer
+        Pluralizer,
+        DateProcessor
     ],
     bootstrap: [AppComponent]
 })
