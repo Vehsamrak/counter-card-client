@@ -23,4 +23,10 @@ export class HistoryComponent {
         let date = new Date(cardTimestamp * 1000);
         return this.dateProcessor.getMonthName(date.getMonth());
     }
+
+    public getCardDay(cardTimestamp: number) {
+        let date = new Date(cardTimestamp * 1000);
+
+        return date.getDate();
+    }
 }

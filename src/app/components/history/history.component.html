@@ -17,7 +17,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let card of getCards(); let i = index;">
-        <td class="mdl-data-table__cell--non-numeric">{{ getCardMonthName(card.createdAt) }}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{ getCardDay(card.createdAt) }} {{ getCardMonthName(card.createdAt) }}</td>
         <td>{{ card.waterHot }}</td>
         <td>{{ card.waterCold }}</td>
         <td>{{ card.electricityDay }}</td>

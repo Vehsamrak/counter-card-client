@@ -26,8 +26,6 @@ export class DateProcessor {
     }
 
     public getMonthName(month: number): string {
-        const months = this.getMonthNames();
-
-        return this.getMonthNames()[5];
+        return this.getMonthNames()[month];
     }
 }
