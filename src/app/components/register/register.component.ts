@@ -11,7 +11,7 @@ export class RegisterComponent {
     public sameIpRegistration: boolean = false;
     private model: any = {};
     private loading = false;
-    private emailPattern: string = '.+@.+\..+';
+    private emailPattern: string = '.+@.+\\..+';
     private submitted: boolean = false;
     private nonUniqueEmailOrFlatNumber: boolean = false;
 
