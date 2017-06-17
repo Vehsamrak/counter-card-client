@@ -1,6 +1,6 @@
 <h3 class="center">История отправленных показаний счетчиков</h3>
 
-<table class="history mdl-data-table mdl-js-data-table full-width">
+<table *ngIf="getCards(); else elseBlock" class="history mdl-data-table mdl-js-data-table full-width">
     <thead>
     <tr>
         <th></th>
@@ -16,3 +16,7 @@
     </tr>
     </tbody>
 </table>
+
+<ng-template #elseBlock>
+    <p class="center">Вы еще не отправляли показаний счетчиков через "Электронную Карточку".</p>
+</ng-template>
