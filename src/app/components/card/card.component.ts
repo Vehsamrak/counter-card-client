@@ -5,6 +5,7 @@ import { HttpClient } from '../../services/http/HttpClient';
 import { CardService } from '../../services/card/CardService';
 import { Pluralizer } from '../../services/Pluralizer';
 import { DateProcessor } from "../../services/DateProcessor";
+import { Authenticator } from "../../services/Authenticator";
 
 @Component({
     selector: 'app-card',
@@ -32,7 +33,8 @@ export class CardComponent {
         private http: HttpClient,
         public pluralizer: Pluralizer,
         public cardService: CardService,
-        private dateProcessor: DateProcessor
+        private dateProcessor: DateProcessor,
+        private authenticator: Authenticator
     ) {
     }
 
@@ -59,7 +61,7 @@ export class CardComponent {
             this.http.post(this.apiUrl, form).subscribe(
                 (data) => {
                     this.buttonText = 'Показания отправлены';
-                    this.cardService.requestLastCard();
+                    this.authenticator.requestInitializationData();
                 },
                 (error) => {
                     this.buttonError = true;
