@@ -6,22 +6,13 @@
         <th></th>
         <th class="big-screen">Горячая вода</th>
         <th class="big-screen">Холодная вода</th>
-        <th class="big-screen">Электричество день</th>
-        <th class="big-screen">Электричество ночь</th>
-
-        <th class="small-screen">Гор.вода</th>
-        <th class="small-screen">Хол.вода</th>
-        <th class="small-screen">Электр.день</th>
-        <th class="small-screen">Электр.ночь</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let card of getCards(); let i = index;">
+    <tr *ngFor="let card of getCards()">
         <td class="mdl-data-table__cell--non-numeric">{{ getCardDay(card.createdAt) }} {{ getCardMonthName(card.createdAt) }}</td>
         <td>{{ card.waterHot }}</td>
         <td>{{ card.waterCold }}</td>
-        <td>{{ card.electricityDay }}</td>
-        <td>{{ card.electricityNight }}</td>
     </tr>
     </tbody>
 </table>

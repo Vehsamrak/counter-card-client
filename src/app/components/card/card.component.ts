@@ -27,8 +27,6 @@ export class CardComponent {
     };
     private waterHot: string = '';
     private waterCold: string = '';
-    private electricityDay: string = '';
-    private electricityNight: string = '';
 
     constructor(
         private http: HttpClient,
@@ -80,6 +78,6 @@ export class CardComponent {
     }
 
     private formIsValid(form: any): boolean {
-        return form.waterHot && form.waterCold && form.electricityDay && form.electricityNight;
+        return form.waterHot && form.waterCold;
     }
 }

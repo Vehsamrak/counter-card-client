@@ -1,36 +1,3 @@
-@media only screen
-and (max-device-width: 500px) {
-    th {
-        font-size: 10px;
-    }
-
-    .small-screen {
-        display: table-cell !important;
-    }
-}
-
-@media only screen
-and (min-device-width: 500px)
-and (max-device-width: 680px) {
-    th {
-        font-size: 13px;
-    }
-
-    .small-screen {
-        display: table-cell !important;
-    }
-}
-
-@media (min-width: 680px) {
-    th {
-        font-size: 16px;
-    }
-
-    .big-screen {
-        display: table-cell !important;
-    }
-}
-
 th {
     padding: 0 0 12px 0;
     text-align: center;
@@ -41,10 +8,3 @@ td {
     text-align: center;
 }
 
-.big-screen {
-    display: none;
-}
-
-.small-screen {
-    display: none;
-}
