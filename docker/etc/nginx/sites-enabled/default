@@ -1,0 +1,12 @@
+server {
+	listen			80;
+	root			/project/dist;
+
+    location / {
+        root /project/dist;
+        try_files $uri$args $uri$args/ /index.html;
+    }
+
+    error_log /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+}
