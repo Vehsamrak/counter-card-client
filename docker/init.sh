@@ -1,5 +1,7 @@
 #!/bin/bash
 
+date
+
 echo "Installing webpack locally ..."
 npm remove webpack -g
 npm i webpack --save-dev
